@@ -1,0 +1,40 @@
+<tool id="get_organelle" name="Assemble organelle genome from genomic skimming data" version="0.1.0" python_template_version="3.5">
+    <requirements>
+        <requirement type="package" version="1.7.6.1">getOrganelle</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        get_organelle_from_reads.py -1 '$fastq1' -2 '$fastq2' -t 10 -o assembly_dir --config-dir ${__tool_directory__}/databases -F ${ref_db} &&
+        cat assembly_dir/*.fasta > ${assembly_contigs} &&
+        zip -r assembly.zip assembly_dir &&
+        mv assembly.zip ${assembly_zip}
+
+
+    ]]></command>
+    <inputs>
+        <param type="data" name="fastq1" format="fastq" help="FASTQ forward reads"/>
+        <param type="data" name="fastq2" format="fastq" help="FASTQ reverse reads" />
+        <param type="select" label="Assembly type" name="ref_db" >
+            <option value="embplant_pt" selected="true" > Embryophyta plant plastome </option>
+            <option value="embplant_mt">Embryophyta plant mitogenome </option>
+            <option value="embplant_nr">Embryophyta plant ribosomal RNA </option>
+            <option value="other_pt">Non-embryophyta plant plastome </option>
+            <option value="animal_mt">Animal mitogenome </option>
+            <option value="fungus_mt">Fungus mitogenome </option>
+            <option value="fungus_nr">Fungus ribosomal RNA </option>
+        </param>
+    </inputs>
+    <outputs>
+        <data name="assembly_contigs" format="fasta" label="Assembly from ${on_string} using ${ref_db} database (contigs)" />
+        <data name="assembly_zip" format="fasta" label="Assembly from ${on_string} using ${ref_db} database (full results as archive)" />
+    </outputs>
+    <help><![CDATA[
+        This toolkit assemblies organelle genome from genomic skimming data.
+
+        Citation: Jian-Jun Jin*, Wen-Bin Yu*, Jun-Bo Yang, Yu Song, Claude W. dePamphilis, Ting-Shuang Yi, De-Zhu Li. GetOrganelle: a fast and versatile toolkit for accurate de novo assembly of organelle genomes. Genome Biology 21, 241 (2020). https://doi.org/10.1186/s13059-020-02154-5
+
+        Source code - https://github.com/Kinggerm/GetOrganelle
+
+        Organelle Database -  https://github.com/Kinggerm/GetOrganelleDB
+
+    ]]></help>
+</tool>
