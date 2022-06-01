@@ -1,0 +1,10 @@
+categories:
+- Assembly
+description: Wrapper for assembly of organelle genomes using GetOrganelle tool (https://github.com/Kinggerm/GetOrganelle)
+homepage_url: https://github.com/kavonrtep/getOrganelle_galaxy_wrapper
+name: get_organelle
+owner: petr-novak
+exclude:
+  - tmp
+  - test_data
+  - notes.txt

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<tool_dependency>
+    <package name="getorganelledb" version="0.0.1">
+        <repository name="package_getorganelledb_0_0_1" owner="petr-novak" prior_installation_required="True" toolshed="https://toolshed.g2.bx.psu.edu" changeset_revision="3b4e4881099a"/>
+        <readme>
+      getorganelle reference database
+    </readme>
+    </package>
+</tool_dependency>

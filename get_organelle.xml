@@ -1,9 +1,12 @@
 <tool id="get_organelle" name="Assemble organelle genome from genomic skimming data" version="0.1.0" python_template_version="3.5">
     <requirements>
-        <requirement type="package" version="1.7.6.1">getOrganelle</requirement>
+        <requirement type="package" version="1.7.6.1">getorganelle</requirement>
+        <requirement type="package" version="0.0.1">getorganelledb</requirement>
+        <requirement type="set_environment">GETORGANELLEDB</requirement>
+
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        get_organelle_from_reads.py -1 '$fastq1' -2 '$fastq2' -t 10 -o assembly_dir --config-dir ${__tool_directory__}/databases -F ${ref_db} &&
+        get_organelle_from_reads.py -1 '$fastq1' -2 '$fastq2' -t 10 -o assembly_dir --config-dir \${GETORGANELLEDB} -F ${ref_db} &&
         cat assembly_dir/*.fasta > ${assembly_contigs} &&
         zip -r assembly.zip assembly_dir &&
         mv assembly.zip ${assembly_zip}
