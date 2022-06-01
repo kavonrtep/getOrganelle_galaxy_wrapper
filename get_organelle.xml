@@ -28,7 +28,7 @@
     </inputs>
     <outputs>
         <data name="assembly_contigs" format="fasta" label="Assembly from ${on_string} using ${ref_db} database (contigs)" />
-        <data name="assembly_zip" format="fasta" label="Assembly from ${on_string} using ${ref_db} database (full results as archive)" />
+        <data name="assembly_zip" format="zip" label="Assembly from ${on_string} using ${ref_db} database (full results as archive)" />
     </outputs>
     <help><![CDATA[
         This toolkit assemblies organelle genome from genomic skimming data.
